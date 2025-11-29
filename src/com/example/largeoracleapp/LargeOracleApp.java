@@ -33,4 +33,56 @@ public class LargeOracleApp {
 
     // nombre de la tabla de ejemplo
     private static final String TABLE_NAME = "SERIES_RESULTS";
+
+    public static void main(String[] args) {
+        System.out.println("Iniciando LargeOracleApp...");
+        
+        try (Connection conn = getConnection()) {
+            // Auto-commit desactivado para control explicito
+            conn.setAutoCommit(false);
+            
+            createTableIfNotExists(conn);
+            long result = calcularSerieSumandoDe4En4Hasta(3862);
+            System.out.println("Resultado de la serie: " + result);
+            
+            insertResult(conn, result);
+            callStoredProcedureExample(conn, result);
+            
+            List<Long> all = queryAllResults(conn);
+            System.out.println("Resultados guardados em DB: " + all);
+            
+            conn.commit();
+        } catch (SQLException ex) {
+            System.err.println("Error en conexion/operaciones SQL: " + ex.getMessage());
+            ex.printStackTrace();
+        }
+        
+        System.out.println("LargeOracleApp finalizado.");
+    }
+
+    private static List<Long> queryAllResults(Connection conn) {
+        return null;
+    }
+
+    private static void callStoredProcedureExample(Connection conn, long result) {
+
+    }
+
+    private static void insertResult(Connection conn, long result) {
+
+    }
+
+    private static long calcularSerieSumandoDe4En4Hasta(int limite) {
+        return 0;
+    }
+
+    private static void createTableIfNotExists(Connection conn) {
+        
+    }
+
+    private static Connection getConnection() {
+        return null;
+    }
+
+
 }
