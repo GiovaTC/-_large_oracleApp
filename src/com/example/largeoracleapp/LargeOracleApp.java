@@ -107,6 +107,18 @@ public class LargeOracleApp {
     }
 
     // --------------------------------------------------------------
+    // Insert
+    // --------------------------------------------------------------
+    private static void insertResult(Connection conn, long value) throws SQLException {
+        String insert = "INSERT INTO " + TABLE_NAME + " (VALUE) VALUES (?)";
+        try (PreparedStatement ps = conn.prepareStatement(insert)) {
+            ps.setLong(1, value);
+            int rows = ps.executeUpdate();
+            System.out.println("Filas insertadas: " + rows);
+        }
+    }
+
+    // --------------------------------------------------------------
     // Query
     // --------------------------------------------------------------
     private static List<Long> queryAllResults(Connection conn) throws SQLException {
@@ -119,12 +131,8 @@ public class LargeOracleApp {
         }
         return list;
     }
-    
+
     private static void callStoredProcedureExample(Connection conn, long result) {
-
-    }
-
-    private static void insertResult(Connection conn, long result) {
 
     }
 }
