@@ -19,15 +19,18 @@ import java.util.Properties;
  * explicado está al principio del fichero.
  */
 public class LargeOracleApp {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
-    }
+    // -------- CONFIGURACIÓN (modifique según su entorno) --------
+    private static final String DB_USER = "system";
+    private static final String DB_PASSWORD = "Tapiero123";
+    private static final String DB_HOST = "localhost";
+    private static final String DB_PORT = "1521";
+    private static final String DB_SID = "orcl";
+
+    // cadena de conexion en formato JDBC para ORACLE :.
+    private static final String JDBC_URL = String.format(
+            "jdbc:oracle:thin:@%s:%s/%s", DB_HOST, DB_PORT, DB_SID);
+
+    // nombre de la tabla de ejemplo
+    private static final String TABLE_NAME = "SERIES_RESULTS";
 }
