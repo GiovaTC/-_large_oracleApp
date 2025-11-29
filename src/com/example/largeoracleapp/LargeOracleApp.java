@@ -60,6 +60,18 @@ public class LargeOracleApp {
         System.out.println("LargeOracleApp finalizado.");
     }
 
+    // --------------------------------------------------------------
+    // Conexión
+    // --------------------------------------------------------------
+    private static Connection getConnection() throws SQLException {
+        Properties props = new Properties();
+        props.setProperty("user", DB_USER);
+        props.setProperty("password", DB_PASSWORD);
+
+        DriverManager.setLoginTimeout(10);
+        return DriverManager.getConnection(JDBC_URL, props);
+    }
+
     private static List<Long> queryAllResults(Connection conn) {
         return null;
     }
@@ -79,10 +91,4 @@ public class LargeOracleApp {
     private static void createTableIfNotExists(Connection conn) {
         
     }
-
-    private static Connection getConnection() {
-        return null;
-    }
-
-
 }
